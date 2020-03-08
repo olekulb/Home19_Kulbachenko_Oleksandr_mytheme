@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Template for a button component.
+ *
+ * Available config:
+ * - type: primary | secondary | success | danger | warning | info | light | dark
+ * - outline: true | false
+ * - tag: button, a, input
+ * - value: string
+ * - attributes: Attributes array.
+ */
+#}
+
+{% set css_classes = [
+  'btn',
+  'form-button',
+  type ? 'btn-' ~ type
+] %}
+{% if tag == 'input' %}
+  <input{{ attributes.addClass(css_classes) }} />
+{% else %}
+  <{{ tag }}>{{ value }}</{{ tag }}>
+{% endif %}
+{#
+{% set class = [
+  'link-button',
+  content.field_section_content_color['#items'][0].value
+] | join (' ') %}
+{% if tag == 'input' %}
+  <input class=""{{ class }} />
+{% else %}
+  <{{ tag }}>{{ value }}</{{ tag }}>
+{% endif %}
+#}
